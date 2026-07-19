@@ -58,7 +58,16 @@ app.use('/api/notifications', notificationRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/leaderboards', leaderboardRoutes);
 
-// Health Check API
+// Root & Health Check API
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'AI Proctor Examination Backend API is running!',
+    status: 'healthy',
+    documentation: '/api',
+    health: '/health'
+  });
+});
+
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'healthy', timestamp: new Date() });
 });
