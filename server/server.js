@@ -82,12 +82,12 @@ app.use((err, req, res, next) => {
 });
 
 const startServer = (port) => {
-  const server = app.listen(port, () => {
-    console.log(`Server running in mode on port ${port}`);
+  const server = app.listen(port, '0.0.0.0', () => {
+    console.log(`Server running on port ${port}`);
   });
 
   server.on('error', (err) => {
-    if (err.code === 'EADDRINUSE') {
+    if (err.code === 'EADDRINUSE' && process.env.NODE_ENV !== 'production') {
       console.warn(`Port ${port} is already in use. Trying port ${port + 1}...`);
       startServer(port + 1);
     } else {
