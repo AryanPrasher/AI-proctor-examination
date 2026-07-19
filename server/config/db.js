@@ -1,13 +1,19 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
+import dns from 'dns';
 
-let mongod = null;
+// Fix Windows DNS SRV lookup failure for MongoDB Atlas
+try {
+  dns.setServers(['8.8.8.8', '1.1.1.1']);
+} catch (e) {
+  // Ignore DNS override errors
+}
 
 const connectDB = async () => {
   try {
     const localUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/ai-proctor-adaptive';
     const conn = await mongoose.connect(localUri, {
-      serverSelectionTimeoutMS: 2000,
+      serverSelectionTimeoutMS: 10000,
     });
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {

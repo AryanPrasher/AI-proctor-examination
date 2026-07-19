@@ -1,0 +1,14 @@
+{
+  "name": "ai-proctor-examination",
+  "version": "1.0.0",
+  "description": "AI-Proctored Adaptive Mock-Test Platform",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "start": "concurrently \"npm run start --prefix server\" \"npm run dev --prefix client\"",
+    "server": "npm run start --prefix server",
+    "client": "npm run dev --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

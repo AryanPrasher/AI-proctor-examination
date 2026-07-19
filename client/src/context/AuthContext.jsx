@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [unlockedSeries, setUnlockedSeries] = useState([]);
 
   // Base API URL
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
   useEffect(() => {
     const loadUser = async () => {
