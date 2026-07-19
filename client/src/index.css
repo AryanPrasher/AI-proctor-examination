@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap');
+
+:root {
+  --font-primary: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  /* Aesthetic Warm Neo-Brutalist Palette */
+  --bg-main: #fcfbfa;         /* Soft warm sand background */
+  --bg-surface: #ffffff;
+  --border-color: #0d0d0d;
+  
+  --primary: #ffd166;         /* Warm Gold/Amber */
+  --primary-hover: #ffc233;
+  --secondary: #83c5be;       /* Soft Sage Teal */
+  --accent: #bdb2ff;          /* Aesthetic Soft Lavender */
+  
+  --text-primary: #0d0d0d;
+  --text-secondary: #2b2d42;
+  --text-muted: #6c757d;
+  
+  --success: #b5e2fa;         /* Soft Sky blue */
+  --warning: #fbc490;         /* Soft Peach */
+  --danger: #ffadad;          /* Soft Coral Red */
+  --info: #a0c4ff;            /* Soft Pastel Blue */
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  
+  --transition-fast: 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  
+  /* Neo-brutalist light dot-grid pattern */
+  background-image: radial-gradient(#e5e7eb 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: #000000;
+  line-height: 1.2;
+}
+
+a {
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 700;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* Navbar styling overrides */
+nav {
+  background: #ffffff !important;
+  border-bottom: 4px solid #000000 !important;
+  box-shadow: 0 4px 0 #000000 !important;
+}
+
+/* Neo-Brutalist Panel cards */
+.glass-panel {
+  background: #ffffff;
+  border: 4px solid #000000 !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 6px 6px 0px #000000 !important;
+  color: #000000 !important;
+  padding: 24px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  backface-visibility: hidden;
+  will-change: transform, box-shadow;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.glass-panel:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px #000000 !important;
+  background: #ffffff !important;
+}
+
+/* Micro-animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.animate-fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hover-scale {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+.hover-scale:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px #000000;
+}
+
+/* Tabs Component styling */
+.tab-container {
+  display: flex;
+  gap: 12px;
+  border-bottom: 4px solid #000000;
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+}
+
+.tab-btn {
+  background: #ffffff;
+  color: #000000;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 800;
+  border: 3px solid #000000;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  box-shadow: 2px 2px 0px #000000;
+  text-transform: uppercase;
+}
+
+.tab-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000000;
+  color: #000000;
+  background: #ffffff;
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+/* Custom interactive buttons */
+button {
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  border: 3px solid #000000;
+  outline: none;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #000000;
+  padding: 10px 22px;
+  box-shadow: 4px 4px 0px #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+  background: var(--primary-hover);
+}
+
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.btn-primary:disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  border-color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: #000000;
+  border: 3px solid #000000;
+  padding: 10px 22px;
+  box-shadow: 4px 4px 0px #000000;
+  text-transform: uppercase;
+}
+
+.btn-secondary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+  background: var(--secondary);
+}
+
+.btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #000000;
+  border: 3px solid #000000;
+  padding: 10px 22px;
+  box-shadow: 4px 4px 0px #000000;
+  text-transform: uppercase;
+}
+
+.btn-danger:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.btn-danger:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+/* Inputs & Form Groups */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-input {
+  background: #ffffff;
+  border: 3px solid #000000;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: #000000;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 14px;
+  transition: all var(--transition-fast);
+}
+
+.form-input:focus {
+  border-color: #000000;
+  background: #fffbeb; /* light warm yellow highlight */
+  outline: none;
+  box-shadow: 3px 3px 0px #000000;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-left: 3px solid #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border: 2px solid #ffffff;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border: 2px solid #000000 !important;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 2px 2px 0px #000000;
+  color: #000000 !important;
+}
+
+.badge-success { background: var(--success); }
+.badge-warning { background: var(--warning); }
+.badge-danger { background: var(--danger); }
+.badge-info { background: var(--info); }
+
+/* Layout Grid Utilities */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  margin-top: 24px;
+}
+
+/* Metric Cards */
+.metric-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.metric-value {
+  font-size: 32px;
+  font-weight: 900;
+  font-family: var(--font-display);
+  color: #000000;
+  margin-top: 8px;
+}
+
+.metric-title {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* Tables styling */
+table {
+  width: 100%;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  background: #ffffff;
+  border: 3px solid #000000;
+  border-radius: var(--radius-sm);
+  box-shadow: 4px 4px 0px #000000;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+thead tr {
+  background: var(--warning) !important;
+}
+
+th {
+  color: #000000 !important;
+  font-weight: 800;
+  border-bottom: 3px solid #000000;
+  border-right: 2px solid #000000;
+  padding: 12px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+th:last-child {
+  border-right: none;
+}
+
+td {
+  color: #000000 !important;
+  border-bottom: 2px solid #000000;
+  border-right: 2px solid #000000;
+  padding: 12px;
+  background: #ffffff !important;
+}
+
+td:last-child {
+  border-right: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Additional Neo-brutalist utility details */
+hr {
+  border: none;
+  border-top: 3px solid #000000;
+  margin: 24px 0;
+}
