@@ -78,18 +78,6 @@ const Register = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label className="form-label">Account Type</label>
-            <select 
-              className="form-input"
-              value={role} 
-              onChange={(e) => setRole(e.target.value)}
-              style={{ background: 'var(--bg-surface)' }}
-            >
-              <option value="test-taker">Test-Taker (Candidate)</option>
-              <option value="content-creator">Content Creator (Author)</option>
-            </select>
-          </div>
 
           <button type="submit" className="btn-primary" disabled={submitting} style={{ width: '100%', padding: '12px', marginTop: '8px' }}>
             {submitting ? 'Creating account...' : 'Create Account'}
