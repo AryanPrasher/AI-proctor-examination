@@ -34,7 +34,11 @@ connectDB().then(async () => {
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Special stripe webhook raw body parser requirement (must run before standard json parser)
 app.use((req, res, next) => {
