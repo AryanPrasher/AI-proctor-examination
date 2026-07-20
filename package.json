@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
-    "start": "concurrently \"npm run start --prefix server\" \"npm run dev --prefix client\"",
+    "start": "node server.js",
+    "postinstall": "cd server && npm install",
     "server": "npm run start --prefix server",
     "client": "npm run dev --prefix client"
   },
