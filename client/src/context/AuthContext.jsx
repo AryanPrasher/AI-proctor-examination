@@ -9,16 +9,8 @@ export const AuthProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([]);
   const [unlockedSeries, setUnlockedSeries] = useState([]);
 
-  // Base API URL with format normalization
-  const getNormalizedApiUrl = () => {
-    let url = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').trim();
-    url = url.replace(/\/+$/, '');
-    if (!url.endsWith('/api')) {
-      url = `${url}/api`;
-    }
-    return url;
-  };
-  const API_URL = getNormalizedApiUrl();
+  // Base API URL
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
   useEffect(() => {
     const loadUser = async () => {

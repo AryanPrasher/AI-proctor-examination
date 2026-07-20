@@ -22,12 +22,11 @@ router.post('/register', authLimiter, async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    // Public registration strictly creates standard candidate user accounts
     const user = await User.create({
       name,
       email,
       password,
-      role: 'test-taker',
+      role: role || 'test-taker', // Default role
     });
 
     return res.status(201).json({
