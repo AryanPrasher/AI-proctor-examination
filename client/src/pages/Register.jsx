@@ -79,7 +79,7 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Register As</label>
+            <label className="form-label">Account Type</label>
             <select 
               className="form-input"
               value={role} 
@@ -88,7 +88,6 @@ const Register = () => {
             >
               <option value="test-taker">Test-Taker (Candidate)</option>
               <option value="content-creator">Content Creator (Author)</option>
-              <option value="admin">System Administrator</option>
             </select>
           </div>
 

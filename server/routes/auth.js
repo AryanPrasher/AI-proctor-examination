@@ -22,11 +22,15 @@ router.post('/register', authLimiter, async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
     }
 
+    // Security check: disallow public self-registration as admin
+    const allowedRoles = ['test-taker', 'content-creator'];
+    const assignedRole = allowedRoles.includes(role) ? role : 'test-taker';
+
     const user = await User.create({
       name,
       email,
       password,
-      role: role || 'test-taker', // Default role
+      role: assignedRole,
     });
 
     return res.status(201).json({
