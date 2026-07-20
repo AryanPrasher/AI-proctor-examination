@@ -2,6 +2,7 @@
   "name": "ai-proctor-examination",
   "version": "1.0.0",
   "description": "AI-Proctored Adaptive Mock-Test Platform",
+  "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "start": "concurrently \"npm run start --prefix server\" \"npm run dev --prefix client\"",
